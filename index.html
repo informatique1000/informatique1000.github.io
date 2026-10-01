@@ -6,9 +6,23 @@
     <title>موقع المعلوماتية للأستاذ | Informatique 1000</title>
     
     <!-- خط تجوال من Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     
-<style>
+    <style>
+        /* ----------------------------------------------------
+           1. الإعدادات العامة والمتغيرات
+        ---------------------------------------------------- */
+        :root {
+            --primary-red: #dc2626;
+            --dark-red: #991b1b;
+            --bg-dark: #000000;
+            --card-dark: #111111;
+            --text-light: #f8fafc;
+            --text-dark: #1e293b;
+            --border-light: #e5e7eb;
+            --shadow-red: rgba(220, 38, 38, 0.45);
+        }
+
         * {
             box-sizing: border-box;
             font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
@@ -17,26 +31,29 @@
         }
 
         body {
-            background-color: #f8fafc;
-            color: #1e293b;
+            background-color: #f1f5f9;
+            color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* ----------------------------------------------------
-           1. الهيدر وشريط التنقل القائم على نمط 3D والانزلاق
+           2. الهيدر وشريط التنقل القائم على نمط 3D والانزلاق
         ---------------------------------------------------- */
         header {
-            background-color: #000000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            background-color: var(--bg-dark);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.8);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 3px solid #dc2626;
+            border-bottom: 3px solid var(--primary-red);
         }
 
         .header-container {
-            max-width: 1280px;
+            max-width: 1300px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -47,9 +64,9 @@
 
         /* اللوجو H1 عريض بالأحمر وزخرفة سوداء */
         .logo {
-            background-color: #000000;
-            color: #dc2626;
-            font-size: 2.2rem;
+            background-color: var(--bg-dark);
+            color: var(--primary-red);
+            font-size: 2rem;
             font-weight: 900;
             letter-spacing: -0.5px;
             padding: 0.4rem 0.8rem;
@@ -57,10 +74,15 @@
             cursor: pointer;
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             user-select: none;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .logo:hover {
-            transform: scale(1.04);
+            transform: scale(1.05);
+            text-shadow: 0 0 12px rgba(220, 38, 38, 0.6);
         }
 
         /* القائمة الرئيسية الأفقیة بتصميم البطاقات 3D */
@@ -79,16 +101,16 @@
             align-items: center;
         }
 
-        /* عناصر القائمة الأفقیة بأسلوب science-unit3D */
+        /* عناصر القائمة الأفقیة بأسلوب 3D */
         nav ul.main-nav > li > a {
             background-color: #ffffff !important;
             color: #000000 !important;
             border: 1px solid #d1d5db;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
             text-decoration: none;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            padding: 10px 22px;
+            padding: 10px 20px;
             border-radius: 8px;
             white-space: nowrap;
             display: inline-flex;
@@ -100,13 +122,13 @@
         /* تفاعل عناصر القائمة الأفقیة: انزلاق للأسفل وتغير اللون للأحمر وحجم إيحائي 3D */
         nav ul.main-nav > li > a:hover,
         nav ul.main-nav > li > a.active {
-            background-color: #dc2626 !important;
+            background-color: var(--primary-red) !important;
             color: #ffffff !important;
-            transform: translateY(10px); /* انزلاق سلس للأسفل */
-            padding: 12px 26px;
-            font-size: 1.25rem;
-            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.45);
-            border-color: #dc2626 !important;
+            transform: translateY(10px);
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 25px var(--shadow-red);
+            border-color: var(--primary-red) !important;
         }
 
         /* القائمة العمودية المنسدلة الأولية (الدروس) */
@@ -114,14 +136,14 @@
             position: absolute;
             top: 100%;
             right: 0;
-            background-color: #000000;
+            background-color: var(--bg-dark);
             min-width: 290px;
             list-style: none;
             border-radius: 10px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
             display: none;
             flex-direction: column;
-            border: 2px solid #dc2626;
+            border: 2px solid var(--primary-red);
             padding: 10px 8px;
             gap: 8px;
             animation: slideDownMenu 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -143,7 +165,7 @@
             align-items: center;
             padding: 12px 18px;
             color: #ffffff !important;
-            background-color: #000000 !important;
+            background-color: var(--bg-dark) !important;
             border: 1px solid #333333;
             border-radius: 8px;
             text-decoration: none;
@@ -155,28 +177,28 @@
 
         /* تفاعل عناصر القائمة العمودية: انزلاق لليسار وتغير باللون الأحمر والظل 3D */
         .dropdown-menu > li > a:hover {
-            background-color: #dc2626 !important;
+            background-color: var(--primary-red) !important;
             color: #ffffff !important;
-            transform: translateX(-18px); /* انزلاق باتجاه اليسار */
-            font-size: 1.12rem;
+            transform: translateX(-15px);
+            font-size: 1.1rem;
             padding: 14px 22px;
-            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
-            border-color: #dc2626 !important;
+            box-shadow: 0 6px 20px var(--shadow-red);
+            border-color: var(--primary-red) !important;
         }
 
         /* القائمة الفرعية المنسدلة على اليسار (Flyout Left Menu) */
         .flyout-menu {
             position: absolute;
             top: 0;
-            right: 100%; /* تظهر مباشرة على اليسار بالنسبة للنظام RTL */
-            background-color: #000000;
-            min-width: 320px;
+            right: 100%; /* تظهر على اليسار بالنسبة لنظام RTL */
+            background-color: var(--bg-dark);
+            min-width: 310px;
             list-style: none;
             border-radius: 10px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
             display: none;
             flex-direction: column;
-            border: 2px solid #dc2626;
+            border: 2px solid var(--primary-red);
             padding: 10px 8px;
             gap: 8px;
             margin-right: 6px;
@@ -202,18 +224,16 @@
             transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* تفاعل القائمة المنسدلة الجانبية: انزلاق لليسار وتكبير ولون أحمر */
         .flyout-menu li a:hover {
-            background-color: #dc2626 !important;
+            background-color: var(--primary-red) !important;
             color: #ffffff !important;
-            transform: translateX(-15px); /* انزلاق متميز باتجاه اليسار */
+            transform: translateX(-12px);
             font-size: 1.05rem;
             padding: 14px 22px;
-            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
-            border-color: #dc2626 !important;
+            box-shadow: 0 6px 20px var(--shadow-red);
+            border-color: var(--primary-red) !important;
         }
 
-        /* حركة الانزلاق عند فتح القوائم */
         @keyframes slideDownMenu {
             from { opacity: 0; transform: translateY(-12px); }
             to { opacity: 1; transform: translateY(0); }
@@ -225,8 +245,16 @@
         }
 
         /* ----------------------------------------------------
-           2. التنسيقات الأصلية للبطاقات والمجالات والجداول
+           3. المحتوى الرئيسي والبطاقات والجداول
         ---------------------------------------------------- */
+        .main-wrapper {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 15px;
+            flex: 1;
+            width: 100%;
+        }
+
         .unit-card {
             padding: 16px 22px;
             border-radius: 8px;
@@ -234,7 +262,7 @@
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
             width: fit-content;
             white-space: nowrap;
@@ -246,18 +274,17 @@
             background-color: #ffffff !important;
             color: #000000 !important;
             border: 1px solid #d1d5db;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
         }
 
-        /* تفاعل شعبة العلوم */
         .science-unit:hover {
-            background-color: #dc2626 !important;
+            background-color: var(--primary-red) !important;
             color: #ffffff !important;
-            transform: translateX(-40px);
-            padding: 20px 28px;
-            font-size: 28px;
-            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
-            border-color: #dc2626 !important;
+            transform: translateX(-30px);
+            padding: 18px 28px;
+            font-size: 26px;
+            box-shadow: 0 8px 25px var(--shadow-red);
+            border-color: var(--primary-red) !important;
         }
 
         /* شعبة الأدب: خلفية سوداء وكتابة بيضاء */
@@ -265,29 +292,34 @@
             background-color: #000000 !important;
             color: #ffffff !important;
             border: 1px solid #333333;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         }
 
-        /* تفاعل شعبة الأدب */
         .arts-unit:hover {
-            background-color: #991b1b !important;
+            background-color: var(--dark-red) !important;
             color: #ffffff !important;
-            transform: translateX(-40px);
-            padding: 20px 28px;
-            font-size: 28px;
-            box-shadow: 0 6px 20px rgba(153, 27, 27, 0.45);
-            border-color: #991b1b !important;
+            transform: translateX(-30px);
+            padding: 18px 28px;
+            font-size: 26px;
+            box-shadow: 0 8px 25px rgba(153, 27, 27, 0.5);
+            border-color: var(--dark-red) !important;
         }
 
-        /* تفاعل صندوق المجال كاملاً */
         .domain-box {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
+        
         .domain-box:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08) !important;
         }
 
-        /* تنسيق الجداول */
+        /* تنسيق الجداول التجاوبية */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         .custom-table {
             width: 100%;
             border-collapse: collapse;
@@ -313,14 +345,15 @@
 
         .code-badge {
             background-color: #fef2f2;
-            color: #dc2626;
-            padding: 4px 10px;
-            border-radius: 4px;
+            color: var(--primary-red);
+            padding: 4px 12px;
+            border-radius: 6px;
             border: 1px solid #f87171;
             font-family: monospace;
             font-size: 20px;
             font-weight: bold;
             letter-spacing: 1px;
+            display: inline-block;
         }
 
         /* حاوية الفيديو المتجاوبة */
@@ -330,8 +363,8 @@
             height: 0;
             overflow: hidden;
             border-radius: 12px;
-            border: 2px solid #dc2626;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid var(--primary-red);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
             margin-top: 15px;
         }
 
@@ -344,14 +377,23 @@
             border: 0;
         }
 
-        /* تجاوب الشاشات الصغيرة */
+        /* ----------------------------------------------------
+           4. التجاوب ودعم الشاشات الصغيرة والهواتف (Mobile Drawer)
+        ---------------------------------------------------- */
         .mobile-toggle {
             display: none;
             background: none;
-            border: none;
+            border: 2px solid var(--primary-red);
             color: white;
-            font-size: 2rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 1.5rem;
             cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .mobile-toggle:hover {
+            background: var(--primary-red);
         }
 
         @media (max-width: 992px) {
@@ -365,12 +407,13 @@
                 top: 85px;
                 right: 0;
                 left: 0;
-                background-color: #000000;
+                background-color: var(--bg-dark);
                 flex-direction: column;
                 padding: 1.5rem;
                 height: auto;
-                border-bottom: 3px solid #dc2626;
+                border-bottom: 4px solid var(--primary-red);
                 gap: 15px;
+                box-shadow: 0 20px 30px rgba(0,0,0,0.9);
             }
 
             nav ul.main-nav.active {
@@ -379,6 +422,8 @@
 
             nav ul.main-nav > li {
                 width: 100%;
+                flex-direction: column;
+                align-items: stretch;
             }
 
             nav ul.main-nav > li > a {
@@ -386,17 +431,26 @@
                 justify-content: space-between;
             }
 
+            nav ul.main-nav > li > a:hover {
+                transform: translateY(0) !important;
+            }
+
             .dropdown-menu {
                 position: static;
                 display: none;
                 width: 100%;
                 box-shadow: none;
-                border: 1px solid #dc2626;
+                border: 1px solid var(--primary-red);
                 background-color: #0b0f19;
+                margin-top: 8px;
             }
 
             .dropdown-menu.mobile-open {
                 display: flex;
+            }
+
+            .dropdown-menu > li > a:hover {
+                transform: translateX(0) !important;
             }
 
             .flyout-menu {
@@ -404,53 +458,86 @@
                 display: none;
                 width: 100%;
                 box-shadow: none;
-                border: 1px solid #dc2626;
+                border: 1px solid var(--primary-red);
                 background-color: #1f2937;
+                margin-top: 8px;
             }
 
             .flyout-menu.mobile-open {
                 display: flex;
             }
+
+            .flyout-menu li a:hover {
+                transform: translateX(0) !important;
+            }
         }
 
         @media (max-width: 768px) {
+            .header-container {
+                height: 75px;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
             .unit-card {
                 white-space: normal;
                 width: 100%;
-                font-size: 20px;
+                font-size: 18px;
             }
+            
             .unit-card:hover {
-                transform: translateX(-15px);
-                font-size: 22px;
-                padding: 18px 22px;
+                transform: translateX(-10px);
+                font-size: 19px;
+                padding: 16px 20px;
             }
+
+            h1 { font-size: 24px !important; }
+            h2 { font-size: 22px !important; }
+            h3 { font-size: 20px !important; }
+        }
+
+        /* ----------------------------------------------------
+           5. التذييل (Footer)
+        ---------------------------------------------------- */
+        footer {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: auto;
+            border-top: 3px solid var(--primary-red);
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
+
+    <!-- الترويسة وشريط التنقل -->
     <header>
         <div class="header-container">
-            <div class="logo">Informatique 1000</div>
+            <a href="index.html" class="logo">Informatique 1000</a>
             
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="قائمة الموبايل">☰</button>
 
             <nav>
                 <ul class="main-nav" id="mainNav">
                     <li><a href="index.html" class="active">الرئيسية</a></li>
                     <li>
-                        <a href="lessons.html" id="lessonsMenuBtn">
-                            الدروس
-                            <span class="text-xs mr-1">▼</span>
+                        <a href="lessons.html" id="lessonsBtn">
+                            <span>الدروس</span>
+                            <span style="font-size: 12px; margin-right: 4px;">▼</span>
                         </a>
                         <!-- القائمة العمودية المنسدلة -->
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" id="lessonsDropdown">
                             <li>
-                                <a href="#" class="has-flyout">
+                                <a href="#" class="has-flyout" id="sciBtn">
                                     <span>1 جذع مشترك علوم وتكنولوجيا</span>
-                                    <span class="text-xs">◀</span>
+                                    <span style="font-size: 12px;">◀</span>
                                 </a>
                                 <!-- القائمة الفرعية الجانبية المنسدلة على اليسار -->
-                                <ul class="flyout-menu">
+                                <ul class="flyout-menu" id="sciFlyout">
                                     <li><a href="#domain1-sci">المجال الأول : بيئة التعامل مع الحاسوب</a></li>
                                     <li><a href="#domain2-sci">المجال الثاني: المخططات الانسيابية و الخوارزميات</a></li>
                                     <li><a href="#domain3-sci">المجال الثالث: تقنية الويب</a></li>
@@ -458,12 +545,12 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" class="has-flyout">
-                                    <span>1 جذع مشترك ادب </span>
-                                    <span class="text-xs">◀</span>
+                                <a href="#" class="has-flyout" id="artBtn">
+                                    <span>1 جذع مشترك أدب</span>
+                                    <span style="font-size: 12px;">◀</span>
                                 </a>
                                 <!-- القائمة الفرعية الجانبية المنسدلة على اليسار -->
-                                <ul class="flyout-menu">
+                                <ul class="flyout-menu" id="artFlyout">
                                     <li><a href="#domain1-art">المجال الأول : بيئة التعامل مع الحاسوب</a></li>
                                     <li><a href="#domain2-art">المجال الثاني: المكتبية</a></li>
                                     <li><a href="#domain3-art">المجال الثالث: تقنية الويب</a></li>
@@ -479,202 +566,247 @@
         </div>
     </header>
 
-    
-<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1f2937; line-height: 1.6; direction: rtl; text-align: right; max-width: 1000px; margin: 0 auto; padding: 10px; background: transparent;">
+    <!-- المحتوى الرئيسي للموقع -->
+    <div class="main-wrapper">
 
-  <!-- 1. واجهة الترحيب -->
-  <div style="background: linear-gradient(135deg, #000000 0%, #1a0505 50%, #3f0707 100%); color: #ffffff; padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; border-bottom: 4px solid #dc2626; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
-    <h1 style="margin: 0 0 10px 0; font-size: 32px; color: #ffffff; border: none; font-weight: bold;">مرحباً بكم في منصة Informatique1000</h1>
-    <p style="font-size: 18px; margin: 0 auto; color: #f3f4f6; max-width: 750px;">
-      الدليل الشامل لمنهاج مادة المعلوماتية للسنة الأولى ثانوي بحسب التدرجات الرسمية.
-    </p>
-  </div>
+        <!-- 1. واجهة الترحيب -->
+        <div style="background: linear-gradient(135deg, #000000 0%, #1a0505 50%, #3f0707 100%); color: #ffffff; padding: 35px 20px; border-radius: 12px; text-align: center; margin-bottom: 30px; border-bottom: 4px solid var(--primary-red); box-shadow: 0 6px 20px rgba(0,0,0,0.2);">
+            <h1 style="margin: 0 0 10px 0; font-size: 32px; color: #ffffff; font-weight: 900;">مرحباً بكم في منصة Informatique1000</h1>
+            <p style="font-size: 18px; margin: 0 auto; color: #f3f4f6; max-width: 800px;">
+                الدليل الشامل لمنهاج مادة المعلوماتية للسنة الأولى ثانوي بحسب التدرجات الرسمية.
+            </p>
+        </div>
 
-  <!-- 2. قسم السنة الأولى جذع مشترك علوم وتكنولوجيا -->
-  <div style="border: 1px solid #d1d5db; border-top: 5px solid #dc2626; border-radius: 10px; padding: 20px; margin-bottom: 35px; box-shadow: 0 4px 6px rgba(0,0,0,0.03);">
-    <h2 style="margin: 0 0 20px 0; color: #111827; font-size: 28px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; font-weight: bold;">
-      السنة الأولى جذع مشترك علوم وتكنولوجيا
-    </h2>
+        <!-- 2. قسم السنة الأولى جذع مشترك علوم وتكنولوجيا -->
+        <div style="border: 1px solid #d1d5db; border-top: 5px solid var(--primary-red); border-radius: 10px; padding: 20px; margin-bottom: 35px; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+            <h2 style="margin: 0 0 20px 0; color: #111827; font-size: 28px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; font-weight: 700;">
+                السنة الأولى جذع مشترك علوم وتكنولوجيا
+            </h2>
 
-    <!-- المجال 1 -->
-    <div class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border-right: 5px solid #dc2626; border: 1px solid #e5e7eb; border-right-width: 5px;">
-      <h3 style="margin: 0 0 15px 0; font-size: 26px; border: none; font-weight: bold;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/" style="color: #dc2626; text-decoration: none;">️ المجال 01: بيئة التعامل مع الحاسوب (Technologies de l'information)</a>
-      </h3>
-      <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap01.html" class="unit-card science-unit">1. تقنية المعلومات</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap02.html" class="unit-card science-unit">2. تركيب الحاسوب</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap03.html" class="unit-card science-unit">3. نظام التشغيل (Système d'exploitation)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap04.html" class="unit-card science-unit">4. لوحة التحكم (Panneau de configuration)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap05.html" class="unit-card science-unit">5. حماية الحاسوب (Antivirus/Sécurité)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap06.html" class="unit-card science-unit">6. الشبكة المحلية (Réseau local - LAN)</a>
-      </div>
+            <!-- المجال 1 -->
+            <div id="domain1-sci" class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; border-right: 5px solid var(--primary-red);">
+                <h3 style="margin: 0 0 15px 0; font-size: 24px; font-weight: 700;">
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/" style="color: var(--primary-red); text-decoration: none;">💻 المجال 01: بيئة التعامل مع الحاسوب (Technologies de l'information)</a>
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap01.html" class="unit-card science-unit">1. تقنية المعلومات</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap02.html" class="unit-card science-unit">2. تركيب الحاسوب</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap03.html" class="unit-card science-unit">3. نظام التشغيل (Système d'exploitation)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap04.html" class="unit-card science-unit">4. لوحة التحكم (Panneau de configuration)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap05.html" class="unit-card science-unit">5. حماية الحاسوب (Antivirus/Sécurité)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap06.html" class="unit-card science-unit">6. الشبكة المحلية (Réseau local - LAN)</a>
+                </div>
+            </div>
+
+            <!-- المجال 2 -->
+            <div id="domain2-sci" class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; border-right: 5px solid var(--primary-red);">
+                <h3 style="margin: 0 0 15px 0; font-size: 24px; font-weight: 700;">
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-02/" style="color: var(--primary-red); text-decoration: none;">⚙️ المجال 02: المخططات الانسيابية والخوارزميات</a>
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-02/chap01.html" class="unit-card science-unit">1. المخطط الانسيابي</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-02/chap02.html" class="unit-card science-unit">2. مدخل إلى الخوارزمية</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-02/chap03.html" class="unit-card science-unit">3. التعليمات الأساسية، الشرطية والتكرارية</a>
+                </div>
+            </div>
+
+            <!-- المجال 3 -->
+            <div id="domain3-sci" class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; border-right: 5px solid var(--primary-red);">
+                <h3 style="margin: 0 0 15px 0; font-size: 24px; font-weight: 700;">
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-03/" style="color: var(--primary-red); text-decoration: none;">🌐 المجال 03: تقنيات الويب (Technologies Web)</a>
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap01.html" class="unit-card science-unit">1. المتصفح</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap02.html" class="unit-card science-unit">2. إنشاء صفحة ويب (Langage HTML)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap03.html" class="unit-card science-unit">3. البريد الإلكتروني</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap04.html" class="unit-card science-unit">4. استغلال أدوات التواصل</a>
+                </div>
+            </div>
+
+            <!-- المجال 4 -->
+            <div id="domain4-sci" class="domain-box" style="background: transparent; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; border-right: 5px solid var(--primary-red); margin-bottom: 25px;">
+                <h3 style="margin: 0 0 15px 0; font-size: 24px; font-weight: 700;">
+                    <a href="https://informatique1000.e-monsite.com/pages/02-04/" style="color: var(--primary-red); text-decoration: none;">📊 المجال 04: المكتبية (Bureautique)</a>
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                    <a href="https://informatique1000.e-monsite.com/pages/02-04/chap01.html" class="unit-card science-unit">1. معالج النصوص (Traitement de texte - Word)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/02-04/chap02.html" class="unit-card science-unit">2. المجدول / جداول البيانات (Tableur - Excel)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/02-04/chap03.html" class="unit-card science-unit">3. العروض التقديمية (Présentation - PowerPoint)</a>
+                </div>
+            </div>
+
+            <!-- جدول أكواد Google Classroom لجذع مشترك علوم وتكنولوجيا -->
+            <div style="background: #ffffff; padding: 18px; border-radius: 8px; border: 1px solid #e5e7eb; border-right: 5px solid var(--primary-red);">
+                <h3 style="margin: 0 0 12px 0; color: var(--primary-red); font-size: 20px; font-weight: 700;">
+                    أكواد الوصول للدروس في Google Classroom (جذع مشترك علوم وتكنولوجيا):
+                </h3>
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>القسم</th>
+                                <th>Code du cours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ج م ع ت 4</td>
+                                <td><span class="code-badge">6tdfe7hh</span></td>
+                            </tr>
+                            <tr>
+                                <td>ج م ع ت 5</td>
+                                <td><span class="code-badge">4cwfaav3</span></td>
+                            </tr>
+                            <tr>
+                                <td>ج م ع ت 6</td>
+                                <td><span class="code-badge">24lztxqz</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 3. قسم الفيديو التوضيحي للالتحاق بالدروس في Google Classroom -->
+        <div style="border: 1px solid #d1d5db; border-top: 5px solid #111827; border-radius: 10px; padding: 20px; margin-bottom: 35px; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+            <h2 style="margin: 0 0 10px 0; color: #111827; font-size: 24px; font-weight: 700;">
+                شرح طريقة الالتحاق بالدروس في Google Classroom:
+            </h2>
+            <p style="font-size: 18px; color: #4b5563; margin-bottom: 10px;">
+                شاهد الفيديو التالي للتعرف على الخطوات البسيطة للالتحاق بالصف ومتابعة الدروس والواجبات:
+            </p>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/ME66rVdzYE4" 
+                    title="طريقة الالتحاق بالدروس في Google Classroom" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- 4. جدول أكواد Google Classroom لجذع مشترك أداب -->
+        <div style="border: 1px solid #d1d5db; border-top: 5px solid var(--dark-red); border-radius: 10px; padding: 20px; margin-bottom: 35px; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+            <h3 style="margin: 0 0 12px 0; color: var(--dark-red); font-size: 20px; font-weight: 700;">
+                أكواد الوصول للدروس في Google Classroom (جذع مشترك أداب):
+            </h3>
+            <div class="table-responsive">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>القسم</th>
+                            <th>Code du cours</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ج م أ 3</td>
+                            <td><span class="code-badge">u7rcje7b</span></td>
+                        </tr>
+                        <tr>
+                            <td>ج م أ 4</td>
+                            <td><span class="code-badge">2imp6qvu</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 5. قسم السنة الأولى جذع مشترك أدب -->
+        <div style="border: 1px solid #d1d5db; border-top: 5px solid var(--dark-red); border-radius: 10px; padding: 20px; margin-bottom: 25px; background: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+            <h2 style="margin: 0 0 20px 0; color: #111827; font-size: 28px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; font-weight: 700;">
+                السنة الأولى جذع مشترك أدب
+            </h2>
+
+            <!-- المجال 1 -->
+            <div id="domain1-art" class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; border-right: 5px solid var(--dark-red);">
+                <h3 style="margin: 0 0 15px 0; font-size: 24px; font-weight: 700;">
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/" style="color: var(--dark-red); text-decoration: none;">💻 المجال 01: بيئة التعامل مع الحاسوب (Technologies de l'information)</a>
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap01.html" class="unit-card arts-unit">1. تقنية المعلومات</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap02.html" class="unit-card arts-unit">2. تركيب الحاسوب</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap03.html" class="unit-card arts-unit">3. نظام التشغيل (Système d'exploitation)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap04.html" class="unit-card arts-unit">4. لوحة التحكم (Panneau de configuration)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap05.html" class="unit-card arts-unit">5. حماية الحاسوب (Antivirus/Sécurité)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap06.html" class="unit-card arts-unit">6. الشبكة المحلية (Réseau local - LAN)</a>
+                </div>
+            </div>
+
+            <!-- المجال 2 -->
+            <div id="domain2-art" class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; border-right: 5px solid var(--dark-red);">
+                <h3 style="margin: 0 0 15px 0; font-size: 24px; font-weight: 700;">
+                    <a href="https://informatique1000.e-monsite.com/pages/02-04/" style="color: var(--dark-red); text-decoration: none;">📊 المجال 02: المكتبية (Bureautique)</a>
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                    <a href="https://informatique1000.e-monsite.com/pages/02-04/chap01.html" class="unit-card arts-unit">1. معالج النصوص (Traitement de texte - Word)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/02-04/chap02.html" class="unit-card arts-unit">2. المجدول / جداول البيانات (Tableur - Excel)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/02-04/chap03.html" class="unit-card arts-unit">3. العروض التقديمية (Présentation - PowerPoint)</a>
+                </div>
+            </div>
+
+            <!-- المجال 3 -->
+            <div id="domain3-art" class="domain-box" style="background: transparent; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; border-right: 5px solid var(--dark-red);">
+                <h3 style="margin: 0 0 15px 0; font-size: 24px; font-weight: 700;">
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-03/" style="color: var(--dark-red); text-decoration: none;">🌐 المجال 03: تقنيات الويب (Technologies Web)</a>
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap01.html" class="unit-card arts-unit">1. المتصفح</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap02.html" class="unit-card arts-unit">2. إنشاء صفحة ويب (Langage HTML)</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap03.html" class="unit-card arts-unit">3. البريد الإلكتروني</a>
+                    <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap04.html" class="unit-card arts-unit">4. استغلال أدوات التواصل</a>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <!-- المجال 2 -->
-    <div class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border-right: 5px solid #dc2626; border: 1px solid #e5e7eb; border-right-width: 5px;">
-      <h3 style="margin: 0 0 15px 0; font-size: 26px; border: none; font-weight: bold;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-02/" style="color: #dc2626; text-decoration: none;"> المجال 02: المخططات الانسيابية والخوارزميات</a>
-      </h3>
-      <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-02/chap01.html" class="unit-card science-unit">1. المخطط الانسيابي</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-02/chap02.html" class="unit-card science-unit">2. مدخل إلى الخوارزمية</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-02/chap03.html" class="unit-card science-unit">3. التعليمات الأساسية، الشرطية والتكرارية</a>
-      </div>
-    </div>
-
-    <!-- المجال 3 -->
-    <div class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border-right: 5px solid #dc2626; border: 1px solid #e5e7eb; border-right-width: 5px;">
-      <h3 style="margin: 0 0 15px 0; font-size: 26px; border: none; font-weight: bold;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-03/" style="color: #dc2626; text-decoration: none;"> المجال 03: تقنيات الويب (Technologies Web)</a>
-      </h3>
-      <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap01.html" class="unit-card science-unit">1. المتصفح</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap02.html" class="unit-card science-unit">2. إنشاء صفحة ويب (Langage HTML)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap03.html" class="unit-card science-unit">3. البريد الإلكتروني</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap04.html" class="unit-card science-unit">4. استغلال أدوات التواصل</a>
-      </div>
-    </div>
-
-    <!-- المجال 4 -->
-    <div class="domain-box" style="background: transparent; padding: 15px; border-radius: 8px; border-right: 5px solid #dc2626; border: 1px solid #e5e7eb; border-right-width: 5px; margin-bottom: 25px;">
-      <h3 style="margin: 0 0 15px 0; font-size: 26px; border: none; font-weight: bold;">
-        <a href="https://informatique1000.e-monsite.com/pages/02-04/" style="color: #dc2626; text-decoration: none;"> المجال 04: المكتبية (Bureautique)</a>
-      </h3>
-      <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-        <a href="https://informatique1000.e-monsite.com/pages/02-04/chap01.html" class="unit-card science-unit">1. معالج النصوص (Traitement de texte - Word)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/02-04/chap02.html" class="unit-card science-unit">2. المجدول / جداول البيانات (Tableur - Excel)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/02-04/chap03.html" class="unit-card science-unit">3. العروض التقديمية (Présentation - PowerPoint)</a>
-      </div>
-    </div>
-
-    <!-- جدول أكواد Google Classroom لجذع مشترك علوم وتكنولوجيا -->
-    <div style="background: #ffffff; padding: 18px; border-radius: 8px; border: 1px solid #e5e7eb; border-right: 5px solid #dc2626;">
-      <h3 style="margin: 0 0 12px 0; color: #dc2626; font-size: 22px; font-weight: bold;">
-        أكواد الوصول للدروس في Google Classroom (جذع مشترك علوم وتكنولوجيا):
-      </h3>
-      <table class="custom-table">
-        <thead>
-          <tr>
-            <th>القسم</th>
-            <th>Code du cours</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ج م ع ت 4</td>
-            <td><span class="code-badge">6tdfe7hh</span></td>
-          </tr>
-          <tr>
-            <td>ج م ع ت 5</td>
-            <td><span class="code-badge">4cwfaav3</span></td>
-          </tr>
-          <tr>
-            <td>ج م ع ت 6</td>
-            <td><span class="code-badge">24lztxqz</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
-
-  <!-- 3. قسم الفيديو التوضيحي للالتحاق بالدروس في Google Classroom -->
-  <div style="border: 1px solid #d1d5db; border-top: 5px solid #111827; border-radius: 10px; padding: 20px; margin-bottom: 35px; background: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.03);">
-    <h2 style="margin: 0 0 10px 0; color: #111827; font-size: 24px; font-weight: bold;">
-      شرح طريقة الالتحاق بالدروس في Google Classroom:
-    </h2>
-    <p style="font-size: 18px; color: #4b5563; margin-bottom: 10px;">
-      شاهد الفيديو التالي للتعرف على الخطوات البسيطة للالتحاق بالصف ومتابعة الدروس والواجبات:
-    </p>
-    <div class="video-container">
-      <iframe 
-        src="https://www.youtube.com/embed/ME66rVdzYE4" 
-        title="طريقة الالتحاق بالدروس في Google Classroom" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-
-  <!-- 4. جدول أكواد Google Classroom لجذع مشترك أداب -->
-  <div style="border: 1px solid #d1d5db; border-top: 5px solid #991b1b; border-radius: 10px; padding: 20px; margin-bottom: 35px; background: #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.03);">
-    <h3 style="margin: 0 0 12px 0; color: #991b1b; font-size: 22px; font-weight: bold;">
-      أكواد الوصول للدروس في Google Classroom (جذع مشترك أداب):
-    </h3>
-    <table class="custom-table">
-      <thead>
-        <tr>
-          <th>القسم</th>
-          <th>Code du cours</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>ج م أ 3</td>
-          <td><span class="code-badge">u7rcje7b</span></td>
-        </tr>
-        <tr>
-          <td>ج م أ 4</td>
-          <td><span class="code-badge">2imp6qvu</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- 5. قسم السنة الأولى جذع مشترك أدب -->
-  <div style="border: 1px solid #d1d5db; border-top: 5px solid #991b1b; border-radius: 10px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.03);">
-    <h2 style="margin: 0 0 20px 0; color: #111827; font-size: 28px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; font-weight: bold;">
-      السنة الأولى جذع مشترك أدب
-    </h2>
-
-    <!-- المجال 1 -->
-    <div class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border-right: 5px solid #991b1b; border: 1px solid #e5e7eb; border-right-width: 5px;">
-      <h3 style="margin: 0 0 15px 0; font-size: 26px; border: none; font-weight: bold;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/" style="color: #991b1b; text-decoration: none;">️ المجال 01: بيئة التعامل مع الحاسوب (Technologies de l'information)</a>
-      </h3>
-      <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap01.html" class="unit-card arts-unit">1. تقنية المعلومات</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap02.html" class="unit-card arts-unit">2. تركيب الحاسوب</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap03.html" class="unit-card arts-unit">3. نظام التشغيل (Système d'exploitation)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap04.html" class="unit-card arts-unit">4. لوحة التحكم (Panneau de configuration)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap05.html" class="unit-card arts-unit">5. حماية الحاسوب (Antivirus/Sécurité)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-01/chap06.html" class="unit-card arts-unit">6. الشبكة المحلية (Réseau local - LAN)</a>
-      </div>
-    </div>
-
-    <!-- المجال 2 -->
-    <div class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border-right: 5px solid #991b1b; border: 1px solid #e5e7eb; border-right-width: 5px;">
-      <h3 style="margin: 0 0 15px 0; font-size: 26px; border: none; font-weight: bold;">
-        <a href="https://informatique1000.e-monsite.com/pages/02-04/" style="color: #991b1b; text-decoration: none;"> المجال 02: المكتبية (Bureautique)</a>
-      </h3>
-      <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-        <a href="https://informatique1000.e-monsite.com/pages/02-04/chap01.html" class="unit-card arts-unit">1. معالج النصوص (Traitement de texte - Word)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/02-04/chap02.html" class="unit-card arts-unit">2. المجدول / جداول البيانات (Tableur - Excel)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/02-04/chap03.html" class="unit-card arts-unit">3. العروض التقديمية (Présentation - PowerPoint)</a>
-      </div>
-    </div>
-
-    <!-- المجال 3 -->
-    <div class="domain-box" style="background: transparent; padding: 15px; border-radius: 8px; border-right: 5px solid #991b1b; border: 1px solid #e5e7eb; border-right-width: 5px;">
-      <h3 style="margin: 0 0 15px 0; font-size: 26px; border: none; font-weight: bold;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-03/" style="color: #991b1b; text-decoration: none;"> المجال 03: تقنيات الويب (Technologies Web)</a>
-      </h3>
-      <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap01.html" class="unit-card arts-unit">1. المتصفح</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap02.html" class="unit-card arts-unit">2. إنشاء صفحة ويب (Langage HTML)</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap03.html" class="unit-card arts-unit">3. البريد الإلكتروني</a>
-        <a href="https://informatique1000.e-monsite.com/pages/cat-03/chap04.html" class="unit-card arts-unit">4. استغلال أدوات التواصل</a>
-      </div>
-    </div>
-
-  </div>
-
-</div>
     <!-- الفوتر -->
     <footer>
         <p>&copy; 2026 جميع الحقوق محفوظة - الأستاذ | Informatique 1000</p>
     </footer>
 
+    <!-- السكريبت التفاعلي للهواتف -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobileToggle');
+            const mainNav = document.getElementById('mainNav');
+            const lessonsBtn = document.getElementById('lessonsBtn');
+            const lessonsDropdown = document.getElementById('lessonsDropdown');
+            const sciBtn = document.getElementById('sciBtn');
+            const sciFlyout = document.getElementById('sciFlyout');
+            const artBtn = document.getElementById('artBtn');
+            const artFlyout = document.getElementById('artFlyout');
+
+            // فتح/إغلاق القائمة الرئيسية بالهاتف
+            mobileToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+
+            // فتح/إغلاق القوائم المنسدلة باللمس للهواتف
+            lessonsBtn.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    lessonsDropdown.classList.toggle('mobile-open');
+                }
+            });
+
+            sciBtn.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    sciFlyout.classList.toggle('mobile-open');
+                }
+            });
+
+            artBtn.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    artFlyout.classList.toggle('mobile-open');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
