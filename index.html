@@ -8,172 +8,140 @@
     <!-- خط تجوال من Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Tajawal', sans-serif;
-        }
+ <style>
+  /* الهيكل العام لبطاقة الوحدة */
+  .unit-card {
+    padding: 16px 22px;
+    border-radius: 8px;
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 600;
+    width: fit-content; /* العرض يتكيف تلقائياً مع حجم النص لمنع النزول للسطر */
+    white-space: nowrap; /* منع التفاف الكلمات نهائياً */
+    box-sizing: border-box;
+  }
 
-        body {
-            background-color: #f4f6f9;
-            color: #333;
-            line-height: 1.6;
-        }
+  /* شعبة العلوم: خلفية بيضاء وكتابة سوداء */
+  .science-unit {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
 
-        /* الهيدر والقائمة العلوية */
-        header {
-            background-color: #1e293b;
-            color: #fff;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+  /* تفاعل شعبة العلوم: انزلاق، تكبير الخط والحجم، وحواف حمراء */
+  .science-unit:hover {
+    background-color: #dc2626 !important;
+    color: #ffffff !important;
+    transform: translateX(-40px); /* انزلاق أوضح باتجاه اليسار */
+    padding: 20px 28px; /* زيادة ارتفاع وعرض البطاقة */
+    font-size: 28px; /* تكبير حجم الخط عند المرور */
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+    border-color: #dc2626 !important;
+  }
 
-        .header-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+  /* شعبة الأدب: خلفية سوداء وكتابة بيضاء */
+  .arts-unit {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #333333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #38bdf8;
-        }
+  /* تفاعل شعبة الأدب: انزلاق، تكبير الخط والحجم، وحواف عنابية */
+  .arts-unit:hover {
+    background-color: #991b1b !important;
+    color: #ffffff !important;
+    transform: translateX(-40px); /* انزلاق أوضح باتجاه اليسار */
+    padding: 20px 28px; /* زيادة ارتفاع وعرض البطاقة */
+    font-size: 28px; /* تكبير حجم الخط عند المرور */
+    box-shadow: 0 6px 20px rgba(153, 27, 27, 0.45);
+    border-color: #991b1b !important;
+  }
 
-        /* المنيو الجديد */
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
+  /* تفاعل صندوق المجال كاملاً */
+  .domain-box {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .domain-box:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.05rem;
-            transition: color 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
+  /* تنسيق الجداول */
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 18px;
+  }
 
-        nav a:hover, nav a.active {
-            color: #38bdf8;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+  .custom-table th, .custom-table td {
+    border: 1px solid #e5e7eb;
+    padding: 12px 15px;
+    text-align: center;
+  }
 
-        /* القسم الرئيسي / البنر */
-        .hero {
-            background: linear-gradient(135deg, #0f172a, #2563eb);
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
+  .custom-table th {
+    background-color: #111827;
+    color: #ffffff;
+    font-weight: bold;
+  }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
+  .custom-table tr:nth-child(even) {
+    background-color: #f9fafb;
+  }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 25px auto;
-            color: #e2e8f0;
-        }
+  .code-badge {
+    background-color: #fef2f2;
+    color: #dc2626;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid #f87171;
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
 
-        .btn {
-            display: inline-block;
-            background-color: #38bdf8;
-            color: #0f172a;
-            padding: 12px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
+  /* حاوية الفيديو المتجاوبة */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* نسبة 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 2px solid #dc2626;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 15px;
+  }
 
-        .btn:hover {
-            background-color: #7dd3fc;
-        }
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
 
-        /* قسم المحتوى والدروس */
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+  /* تجاوب الشاشات الصغيرة */
+  @media (max-width: 768px) {
+    .unit-card {
+      white-space: normal;
+      width: 100%;
+      font-size: 20px;
+    }
+    .unit-card:hover {
+      transform: translateX(-15px);
+      font-size: 22px;
+      padding: 18px 22px;
+    }
+  }
+</style>
 
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: #1e293b;
-            border-bottom: 3px solid #2563eb;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: #2563eb;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        .card a {
-            color: #0284c7;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* الفوتر (أسفل الصفحة) */
-        footer {
-            background-color: #0f172a;
-            color: #94a3b8;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
-
-        /* التجاوب مع الهواتف */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
 </head>
 <body>
 
