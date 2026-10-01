@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع المعلوماتية للأستاذ | Informatique 1000</title>
+    
+    <!-- خط تجوال من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* الهيدر والقائمة العلوية */
+        header {
+            background-color: #1e293b;
+            color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        /* المنيو الجديد */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #38bdf8;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* القسم الرئيسي / البنر */
+        .hero {
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 25px auto;
+            color: #e2e8f0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #7dd3fc;
+        }
+
+        /* قسم المحتوى والدروس */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #1e293b;
+            border-bottom: 3px solid #2563eb;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .card a {
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* الفوتر (أسفل الصفحة) */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* التجاوب مع الهواتف */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر والقائمة العلوية -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Informatique 1000</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">الاستقبال</a></li>
+                    <li><a href="lessons.html">الدروس</a></li>
+                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- واجهة الصفحة الرئيسية -->
+    <section class="hero">
+        <h1>مرحباً بكم في منصة المعلوماتية والتعليم</h1>
+        <p>موقع تعليمي متخصص في تقديم دروس وملخصات مادة المعلوماتية وتكنولوجيا المعلومات بأسلوب مبسط وشامل.</p>
+        <a href="lessons.html" class="btn">تصفح جميع الدروس</a>
+    </section>
+
+    <!-- قسم أحدث الدروس والمحتوى -->
+    <main class="container">
+        <div style="text-align: center;">
+            <h2 class="section-title">أحدث الدروس والملخصات</h2>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>أساسيات البرمجة للمبتدئين</h3>
+                <p>مقدمة شاملة للتعرف على المفاهيم الأساسية للبرمجة وخوارزميات الحل خطوة بخطوة.</p>
+                <a href="#">اقرأ المزيد &larr;</a>
+            </div>
+
+            <div class="card">
+                <h3>شرح شبكات الحاسوب (Networking)</h3>
+                <p>تعلم كيفية عمل الشبكات، أنواعها، والبروتوكولات الأساسية لنقل البيانات عبر الإنترنت.</p>
+                <a href="#">اقرأ المزيد &larr;</a>
+            </div>
+
+            <div class="card">
+                <h3>أنظمة التشغيل وإدارة الملفات</h3>
+                <p>دروس مخصصة لفهم معماريّات أنظمة التشغيل وكيفية التعامل مع المكونات المادية والتطبيقية.</p>
+                <a href="#">اقرأ المزيد &larr;</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>&copy; 2026 جميع الحقوق محفوظة - الأستاذ | Informatique 1000</p>
+    </footer>
+
+</body>
+</html>
