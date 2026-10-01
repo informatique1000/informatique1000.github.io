@@ -8,7 +8,7 @@
     <!-- خط تجوال من Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
-     <style>
+<style>
         * {
             box-sizing: border-box;
             font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
@@ -24,15 +24,15 @@
         }
 
         /* ----------------------------------------------------
-           1. الهيدر وشريط التنقل والقوائم المنسدلة (Navbar & Submenus)
+           1. الهيدر وشريط التنقل القائم على نمط 3D والانزلاق
         ---------------------------------------------------- */
         header {
             background-color: #000000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid #dc2626;
+            border-bottom: 3px solid #dc2626;
         }
 
         .header-container {
@@ -42,32 +42,32 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 1.5rem;
-            height: 80px;
+            height: 85px;
         }
 
-        /* اللوجو */
+        /* اللوجو H1 عريض بالأحمر وزخرفة سوداء */
         .logo {
             background-color: #000000;
             color: #dc2626;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 900;
             letter-spacing: -0.5px;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             user-select: none;
         }
 
         .logo:hover {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
 
-        /* القائمة الرئيسية الأفقیة */
+        /* القائمة الرئيسية الأفقیة بتصميم البطاقات 3D */
         nav ul.main-nav {
             display: flex;
             list-style: none;
-            gap: 8px;
+            gap: 12px;
             align-items: center;
             height: 100%;
         }
@@ -79,44 +79,52 @@
             align-items: center;
         }
 
+        /* عناصر القائمة الأفقیة بأسلوب science-unit3D */
         nav ul.main-nav > li > a {
-            color: #ffffff;
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border: 1px solid #d1d5db;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
             text-decoration: none;
-            font-size: 1.125rem;
-            font-weight: 600;
-            padding: 12px 20px;
-            border-radius: 6px;
-            background-color: #000000;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 8px;
+            white-space: nowrap;
+            display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Hover للملاحة الرئيسية: تغير اللون للأحمر */
+        /* تفاعل عناصر القائمة الأفقیة: انزلاق للأسفل وتغير اللون للأحمر وحجم إيحائي 3D */
         nav ul.main-nav > li > a:hover,
         nav ul.main-nav > li > a.active {
             background-color: #dc2626 !important;
             color: #ffffff !important;
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+            transform: translateY(10px); /* انزلاق سلس للأسفل */
+            padding: 12px 26px;
+            font-size: 1.25rem;
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.45);
+            border-color: #dc2626 !important;
         }
 
-        /* القائمة المنسدلة العمودية الأولى (الدروس) */
+        /* القائمة العمودية المنسدلة الأولية (الدروس) */
         .dropdown-menu {
             position: absolute;
             top: 100%;
             right: 0;
             background-color: #000000;
-            min-width: 270px;
+            min-width: 290px;
             list-style: none;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
             display: none;
             flex-direction: column;
-            border: 1px solid #1f2937;
-            border-top: 3px solid #dc2626;
-            padding: 6px 0;
-            animation: fadeIn 0.25s ease-in-out forwards;
+            border: 2px solid #dc2626;
+            padding: 10px 8px;
+            gap: 8px;
+            animation: slideDownMenu 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
         nav ul.main-nav > li:hover .dropdown-menu {
@@ -128,95 +136,97 @@
             width: 100%;
         }
 
+        /* عناصر القائمة العمودية المنسدلة */
         .dropdown-menu > li > a {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 20px;
-            color: #ffffff;
+            padding: 12px 18px;
+            color: #ffffff !important;
+            background-color: #000000 !important;
+            border: 1px solid #333333;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            background-color: #000000;
-            transition: all 0.25s ease;
+            font-size: 1.05rem;
+            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* hover عناصر القائمة المنسدلة */
+        /* تفاعل عناصر القائمة العمودية: انزلاق لليسار وتغير باللون الأحمر والظل 3D */
         .dropdown-menu > li > a:hover {
             background-color: #dc2626 !important;
             color: #ffffff !important;
-            padding-right: 26px; /* حركة بسيطة للتفاعل */
+            transform: translateX(-18px); /* انزلاق باتجاه اليسار */
+            font-size: 1.12rem;
+            padding: 14px 22px;
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
+            border-color: #dc2626 !important;
         }
 
-        /* القائمة الفرعية الجانبية التي تظهر على الجهة اليسرى (Flyout Submenu Left) */
+        /* القائمة الفرعية المنسدلة على اليسار (Flyout Left Menu) */
         .flyout-menu {
             position: absolute;
             top: 0;
-            right: 100%; /* تظهر على اليسار بالنسبة للقائمة العربية RTL */
-            background-color: #0b0f19;
-            min-width: 310px;
+            right: 100%; /* تظهر مباشرة على اليسار بالنسبة للنظام RTL */
+            background-color: #000000;
+            min-width: 320px;
             list-style: none;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
             display: none;
             flex-direction: column;
-            border: 1px solid #374151;
-            border-right: 3px solid #dc2626;
-            padding: 8px 0;
-            margin-right: 2px;
-            animation: slideLeft 0.25s ease-in-out forwards;
+            border: 2px solid #dc2626;
+            padding: 10px 8px;
+            gap: 8px;
+            margin-right: 6px;
+            animation: slideLeftFlyout 0.3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
         .dropdown-menu > li:hover .flyout-menu {
             display: flex;
         }
 
+        /* عناصر القائمة الجانبية اليسرى */
         .flyout-menu li a {
             display: block;
-            padding: 12px 20px;
-            color: #e5e7eb;
+            padding: 12px 18px;
+            color: #ffffff !important;
+            background-color: #111111 !important;
+            border: 1px solid #262626;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border-bottom: 1px solid #1f2937;
-            transition: all 0.2s ease;
+            font-size: 0.98rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .flyout-menu li:last-child a {
-            border-bottom: none;
-        }
-
+        /* تفاعل القائمة المنسدلة الجانبية: انزلاق لليسار وتكبير ولون أحمر */
         .flyout-menu li a:hover {
-            background-color: #dc2626;
-            color: #ffffff;
-            padding-right: 26px;
+            background-color: #dc2626 !important;
+            color: #ffffff !important;
+            transform: translateX(-15px); /* انزلاق متميز باتجاه اليسار */
+            font-size: 1.05rem;
+            padding: 14px 22px;
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
+            border-color: #dc2626 !important;
         }
 
-        /* animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        /* حركة الانزلاق عند فتح القوائم */
+        @keyframes slideDownMenu {
+            from { opacity: 0; transform: translateY(-12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes slideLeft {
-            from { opacity: 0; transform: translateX(10px); }
+        @keyframes slideLeftFlyout {
+            from { opacity: 0; transform: translateX(12px); }
             to { opacity: 1; transform: translateX(0); }
         }
 
-        /* زر القائمة للشاشات الصغيرة */
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
         /* ----------------------------------------------------
-           2. التنسيقات الخاصة بالبطاقات والمكونات المحددة
+           2. التنسيقات الأصلية للبطاقات والمجالات والجداول
         ---------------------------------------------------- */
-        /* الهيكل العام لبطاقة الوحدة */
         .unit-card {
             padding: 16px 22px;
             border-radius: 8px;
@@ -226,8 +236,8 @@
             display: inline-block;
             font-size: 24px;
             font-weight: 600;
-            width: fit-content; /* العرض يتكيف تلقائياً مع حجم النص لمنع النزول للسطر */
-            white-space: nowrap; /* منع التفاف الكلمات نهائياً */
+            width: fit-content;
+            white-space: nowrap;
             box-sizing: border-box;
         }
 
@@ -239,13 +249,13 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        /* تفاعل شعبة العلوم: انزلاق، تكبير الخط والحجم، وحواف حمراء */
+        /* تفاعل شعبة العلوم */
         .science-unit:hover {
             background-color: #dc2626 !important;
             color: #ffffff !important;
-            transform: translateX(-40px); /* انزلاق أوضح باتجاه اليسار */
-            padding: 20px 28px; /* زيادة ارتفاع وعرض البطاقة */
-            font-size: 28px; /* تكبير حجم الخط عند المرور */
+            transform: translateX(-40px);
+            padding: 20px 28px;
+            font-size: 28px;
             box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
             border-color: #dc2626 !important;
         }
@@ -258,13 +268,13 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        /* تفاعل شعبة الأدب: انزلاق، تكبير الخط والحجم، وحواف عنابية */
+        /* تفاعل شعبة الأدب */
         .arts-unit:hover {
             background-color: #991b1b !important;
             color: #ffffff !important;
-            transform: translateX(-40px); /* انزلاق أوضح باتجاه اليسار */
-            padding: 20px 28px; /* زيادة ارتفاع وعرض البطاقة */
-            font-size: 28px; /* تكبير حجم الخط عند المرور */
+            transform: translateX(-40px);
+            padding: 20px 28px;
+            font-size: 28px;
             box-shadow: 0 6px 20px rgba(153, 27, 27, 0.45);
             border-color: #991b1b !important;
         }
@@ -316,7 +326,7 @@
         /* حاوية الفيديو المتجاوبة */
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* نسبة 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 12px;
@@ -335,6 +345,15 @@
         }
 
         /* تجاوب الشاشات الصغيرة */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
         @media (max-width: 992px) {
             .mobile-toggle {
                 display: block;
@@ -343,14 +362,15 @@
             nav ul.main-nav {
                 display: none;
                 position: absolute;
-                top: 80px;
+                top: 85px;
                 right: 0;
                 left: 0;
                 background-color: #000000;
                 flex-direction: column;
-                padding: 1rem;
+                padding: 1.5rem;
                 height: auto;
-                border-bottom: 2px solid #dc2626;
+                border-bottom: 3px solid #dc2626;
+                gap: 15px;
             }
 
             nav ul.main-nav.active {
@@ -371,9 +391,8 @@
                 display: none;
                 width: 100%;
                 box-shadow: none;
-                border: none;
-                background-color: #111827;
-                padding-right: 1rem;
+                border: 1px solid #dc2626;
+                background-color: #0b0f19;
             }
 
             .dropdown-menu.mobile-open {
@@ -385,9 +404,8 @@
                 display: none;
                 width: 100%;
                 box-shadow: none;
-                border: none;
+                border: 1px solid #dc2626;
                 background-color: #1f2937;
-                padding-right: 1rem;
             }
 
             .flyout-menu.mobile-open {
@@ -408,62 +426,6 @@
             }
         }
     </style>
-</head>
-<body>
-
-    <!-- الهيدر والقائمة العلوية -->
-<header>
-        <div class="header-container">
-            <div class="logo">Informatique 1000</div>
-            
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-               
-            </button>
-
-            <nav>
-                <ul class="main-nav" id="mainNav">
-                    <li><a href="index.html" class="active">الرئيسية</a></li>
-                    <li>
-                        <a href="lessons.html" id="lessonsMenuBtn">
-                            الدروس
-                            <span class="text-xs mr-1">▼</span>
-                        </a>
-                        <!-- القائمة العمودية المنسدلة -->
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#" class="has-flyout">
-                                    <span>1 جذع مشترك علوم وتكنولوجيا</span>
-                                    <span class="text-xs">◀</span>
-                                </a>
-                                <!-- القائمة الفرعية الجانبية (جهة اليسار) -->
-                                <ul class="flyout-menu">
-                                    <li><a href="#domain1-sci">المجال الأول : بيئة التعامل مع الحاسوب</a></li>
-                                    <li><a href="#domain2-sci">المجال الثاني: المخططات الانسيابية والخوارزميات</a></li>
-                                    <li><a href="#domain3-sci">المجال الثالث: تقنية الويب</a></li>
-                                    <li><a href="#domain4-sci">المجال الرابع : المكتبية</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="has-flyout">
-                                    <span>1 جذع مشترك أدب وفلسفة</span>
-                                    <span class="text-xs">◀</span>
-                                </a>
-                                <!-- القائمة الفرعية الجانبية (جهة اليسار) -->
-                                <ul class="flyout-menu">
-                                    <li><a href="#domain1-art">المجال الأول : بيئة التعامل مع الحاسوب</a></li>
-                                    <li><a href="#domain2-art">المجال الثاني: المكتبية</a></li>
-                                    <li><a href="#domain3-art">المجال الثالث: تقنية الويب</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
-                    <li><a href="about.html">من نحن</a></li>
-                    <li><a href="contact.html">اتصل بنا</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
     
 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1f2937; line-height: 1.6; direction: rtl; text-align: right; max-width: 1000px; margin: 0 auto; padding: 10px; background: transparent;">
 
@@ -499,7 +461,7 @@
     <!-- المجال 2 -->
     <div class="domain-box" style="margin-bottom: 25px; background: transparent; padding: 15px; border-radius: 8px; border-right: 5px solid #dc2626; border: 1px solid #e5e7eb; border-right-width: 5px;">
       <h3 style="margin: 0 0 15px 0; font-size: 26px; border: none; font-weight: bold;">
-        <a href="https://informatique1000.e-monsite.com/pages/cat-02/" style="color: #dc2626; text-decoration: none;">⚙️ المجال 02: المخططات الانسيابية والخوارزميات</a>
+        <a href="https://informatique1000.e-monsite.com/pages/cat-02/" style="color: #dc2626; text-decoration: none;"> المجال 02: المخططات الانسيابية والخوارزميات</a>
       </h3>
       <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
         <a href="https://informatique1000.e-monsite.com/pages/cat-02/chap01.html" class="unit-card science-unit">1. المخطط الانسيابي</a>
