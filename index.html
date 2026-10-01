@@ -412,13 +412,51 @@
 <body>
 
     <!-- الهيدر والقائمة العلوية -->
-    <header>
+<header>
         <div class="header-container">
             <div class="logo">Informatique 1000</div>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+               
+            </button>
+
             <nav>
-                <ul>
+                <ul class="main-nav" id="mainNav">
                     <li><a href="index.html" class="active">الرئيسية</a></li>
-                    <li><a href="lessons.html">الدروس</a></li>
+                    <li>
+                        <a href="lessons.html" id="lessonsMenuBtn">
+                            الدروس
+                            <span class="text-xs mr-1">▼</span>
+                        </a>
+                        <!-- القائمة العمودية المنسدلة -->
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#" class="has-flyout">
+                                    <span>1 جذع مشترك علوم وتكنولوجيا</span>
+                                    <span class="text-xs">◀</span>
+                                </a>
+                                <!-- القائمة الفرعية الجانبية (جهة اليسار) -->
+                                <ul class="flyout-menu">
+                                    <li><a href="#domain1-sci">المجال الأول : بيئة التعامل مع الحاسوب</a></li>
+                                    <li><a href="#domain2-sci">المجال الثاني: المخططات الانسيابية والخوارزميات</a></li>
+                                    <li><a href="#domain3-sci">المجال الثالث: تقنية الويب</a></li>
+                                    <li><a href="#domain4-sci">المجال الرابع : المكتبية</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="has-flyout">
+                                    <span>1 جذع مشترك أدب وفلسفة</span>
+                                    <span class="text-xs">◀</span>
+                                </a>
+                                <!-- القائمة الفرعية الجانبية (جهة اليسار) -->
+                                <ul class="flyout-menu">
+                                    <li><a href="#domain1-art">المجال الأول : بيئة التعامل مع الحاسوب</a></li>
+                                    <li><a href="#domain2-art">المجال الثاني: المكتبية</a></li>
+                                    <li><a href="#domain3-art">المجال الثالث: تقنية الويب</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                     <li><a href="privacy.html">سياسة الخصوصية</a></li>
                     <li><a href="about.html">من نحن</a></li>
                     <li><a href="contact.html">اتصل بنا</a></li>
@@ -426,142 +464,7 @@
             </nav>
         </div>
     </header>
-
-    <!-- واجهة الصفحة الرئيسية -->
-   <style>
-  /* الهيكل العام لبطاقة الوحدة */
-  .unit-card {
-    padding: 16px 22px;
-    border-radius: 8px;
-    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 24px;
-    font-weight: 600;
-    width: fit-content; /* العرض يتكيف تلقائياً مع حجم النص لمنع النزول للسطر */
-    white-space: nowrap; /* منع التفاف الكلمات نهائياً */
-    box-sizing: border-box;
-  }
-
-  /* شعبة العلوم: خلفية بيضاء وكتابة سوداء */
-  .science-unit {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    border: 1px solid #d1d5db;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-
-  /* تفاعل شعبة العلوم: انزلاق، تكبير الخط والحجم، وحواف حمراء */
-  .science-unit:hover {
-    background-color: #dc2626 !important;
-    color: #ffffff !important;
-    transform: translateX(-40px); /* انزلاق أوضح باتجاه اليسار */
-    padding: 20px 28px; /* زيادة ارتفاع وعرض البطاقة */
-    font-size: 28px; /* تكبير حجم الخط عند المرور */
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
-    border-color: #dc2626 !important;
-  }
-
-  /* شعبة الأدب: خلفية سوداء وكتابة بيضاء */
-  .arts-unit {
-    background-color: #000000 !important;
-    color: #ffffff !important;
-    border: 1px solid #333333;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  /* تفاعل شعبة الأدب: انزلاق، تكبير الخط والحجم، وحواف عنابية */
-  .arts-unit:hover {
-    background-color: #991b1b !important;
-    color: #ffffff !important;
-    transform: translateX(-40px); /* انزلاق أوضح باتجاه اليسار */
-    padding: 20px 28px; /* زيادة ارتفاع وعرض البطاقة */
-    font-size: 28px; /* تكبير حجم الخط عند المرور */
-    box-shadow: 0 6px 20px rgba(153, 27, 27, 0.45);
-    border-color: #991b1b !important;
-  }
-
-  /* تفاعل صندوق المجال كاملاً */
-  .domain-box {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .domain-box:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
-
-  /* تنسيق الجداول */
-  .custom-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    font-size: 18px;
-  }
-
-  .custom-table th, .custom-table td {
-    border: 1px solid #e5e7eb;
-    padding: 12px 15px;
-    text-align: center;
-  }
-
-  .custom-table th {
-    background-color: #111827;
-    color: #ffffff;
-    font-weight: bold;
-  }
-
-  .custom-table tr:nth-child(even) {
-    background-color: #f9fafb;
-  }
-
-  .code-badge {
-    background-color: #fef2f2;
-    color: #dc2626;
-    padding: 4px 10px;
-    border-radius: 4px;
-    border: 1px solid #f87171;
-    font-family: monospace;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-
-  /* حاوية الفيديو المتجاوبة */
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* نسبة 16:9 */
-    height: 0;
-    overflow: hidden;
-    border-radius: 12px;
-    border: 2px solid #dc2626;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin-top: 15px;
-  }
-
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-
-  /* تجاوب الشاشات الصغيرة */
-  @media (max-width: 768px) {
-    .unit-card {
-      white-space: normal;
-      width: 100%;
-      font-size: 20px;
-    }
-    .unit-card:hover {
-      transform: translateX(-15px);
-      font-size: 22px;
-      padding: 18px 22px;
-    }
-  }
-</style>
-
+    
 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1f2937; line-height: 1.6; direction: rtl; text-align: right; max-width: 1000px; margin: 0 auto; padding: 10px; background: transparent;">
 
   <!-- 1. واجهة الترحيب -->
